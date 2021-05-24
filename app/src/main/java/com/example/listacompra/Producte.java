@@ -6,7 +6,9 @@ public class Producte {
     String foto;
     int quantitat;
 
-    private boolean checked;
+    public Producte(){
+
+    };
 
     public Producte(String nom, String foto, int quantitat) {
         this.nom = nom;
@@ -14,8 +16,24 @@ public class Producte {
         this.quantitat = quantitat;
     }
 
-    public String getNomProducte() {
+    public String getNom() {
         return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
+    }
+
+    public int getQuantitat() {
+        return quantitat;
+    }
+
+    public void setQuantitat(int quantitat) {
+        this.quantitat = quantitat;
     }
 
     public String getFoto() {

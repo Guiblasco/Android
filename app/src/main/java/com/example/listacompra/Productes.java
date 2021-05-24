@@ -35,6 +35,11 @@ public class Productes extends MainActivity {
         lv1 = findViewById(R.id.lv1);
 
         carregarLista();
+
+
+    }
+
+    private void carregarLista() {
         myref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -60,12 +65,8 @@ public class Productes extends MainActivity {
             }
 
         });
+
         adapta();
-    }
-
-    private void carregarLista() {
-
-
 
 
 
