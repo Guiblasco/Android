@@ -8,9 +8,19 @@
         android:title="@string/home"
         app:showAsAction="never" />
     <item
-        android:id="@+id/adapter"
+        android:id="@+id/productes"
         android:orderInCategory="100"
         android:title="@string/adapter"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/producteNou"
+        android:orderInCategory="100"
+        android:title="@string/producteNou"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/carrito"
+        android:orderInCategory="100"
+        android:title="@string/carrito"
         app:showAsAction="never" />
 
 </menu>

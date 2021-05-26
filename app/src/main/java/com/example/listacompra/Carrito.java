@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class Carrito extends MainActivity {
+public class Carrito extends MainMenu {
     public class ProducteCarrito {
         String nom;
         String unitats;

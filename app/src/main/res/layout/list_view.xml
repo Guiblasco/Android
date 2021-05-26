@@ -7,7 +7,7 @@
     android:background="@drawable/bg_background">
 
     <ListView
-        android:id="@+id/lv1"
+        android:id="@+id/list"
         android:layout_width="0dp"
         android:layout_height="566dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,7 +24,7 @@
         android:layout_marginEnd="14dp"
         android:text="@string/productes"
         android:textAlignment="center"
-        android:textColor="#3F51B5"
+        android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/lv1"
         app:layout_constraintEnd_toEndOf="parent"

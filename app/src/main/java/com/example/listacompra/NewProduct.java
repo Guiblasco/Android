@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -37,14 +38,16 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.Date;
 
-public class NewProduct extends MainActivity {
+public class NewProduct extends MainMenu {
     ImageView foto;
     ImageButton openCamera;
+    Button pujarProducte;
     Uri uri_img;
     EditText nomProducte;
 
     private static final int REQUEST_PERMISSION_CAMERA = 100;
     private static final int REQUEST_IMAGE_CAMERA = 101;
+    private static final int CODE_GALLERY = 90;
 
 
     @Override
@@ -53,6 +56,13 @@ public class NewProduct extends MainActivity {
         setContentView(R.layout.activity_new_product);
         foto = findViewById(R.id.producteNou);
         nomProducte = findViewById(R.id.newNomInput);
+        pujarProducte = findViewById(R.id.altaProducte);
+        pujarProducte.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnclickAlta();
+            }
+        });
         openCamera = findViewById(R.id.fotoProducte);
         openCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +80,12 @@ public class NewProduct extends MainActivity {
             }
         });
     }
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permision,@NonNull int [] grantResult){
+
+
+
+
+
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permision, @NonNull int [] grantResult){
         if(requestCode == REQUEST_PERMISSION_CAMERA){
             if(permision.length > 0 && grantResult[0] == PackageManager.PERMISSION_GRANTED){
                 OnClickfoto();
@@ -84,21 +99,23 @@ public class NewProduct extends MainActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == REQUEST_IMAGE_CAMERA){
-            if(resultCode == Activity.RESULT_OK){
-                uri_img = data.getData();
-                Log.e("uri","image del uri " + uri_img);
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getApplicationContext().getContentResolver(),uri_img);
-                    foto.setImageBitmap(bitmap);
-
-                }catch (Exception ex){
-                    ex.printStackTrace();
-                }
 
 
-            }
-        }
+
+
+
+               if(requestCode == REQUEST_IMAGE_CAMERA && resultCode == RESULT_OK){
+                   uri_img = data.getData();
+                   try {
+                       Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                       foto.setImageBitmap(bitmap);
+
+                   }catch (Exception e){
+
+                   }
+                   }
+
+
         super.onActivityResult(requestCode, resultCode, data);
     }
 
@@ -110,23 +127,14 @@ public class NewProduct extends MainActivity {
         }
     }
 
-    public void OnclickAlta(View view) {
+    public void OnclickAlta() {
         //donar de alta producte en firebase
         Producte producteNou = new Producte();
-        producteNou.setNom(nomProducte.getText().toString());
+        producteNou.setNomProducte(nomProducte.getText().toString());
+        producteNou.setQuantitat(0);
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference imagesReference = storageReference.child(new Date().toString());
 
-        imagesReference.putFile(uri_img).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while(!uriTask.isSuccessful());
-                Uri downloadUri = uriTask.getResult();
-                producteNou.setFoto(downloadUri.toString());
-            }
-        });
+
         FirebaseDatabase databaseProducte = FirebaseDatabase.getInstance();
         DatabaseReference referenceProducte = databaseProducte.getReference("Productes");
         referenceProducte.push().setValue(producteNou);

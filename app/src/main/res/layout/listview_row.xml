@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="?attr/listPreferredItemHeight"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/producte_avatar"
+        android:layout_width="100dp"
+        android:layout_height="115dp"
+        android:layout_marginLeft="40dp" />
+
+    <TextView
+        android:id="@+id/producte_nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:text="@string/menjar_nom"
+        android:textAppearance="?attr/textAppearanceListItem"
+        android:textSize="24sp"
+        tools:text="Nom" />
+
+    <TextView
+        android:id="@+id/producte_descripcio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/producte_nom"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/menjar_descripcio"
+        android:textSize="18sp"
+        tools:text="Descripcio" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="3dp"
+        android:focusable="false" />
+
+    <Button
+        android:id="@+id/button_plus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/producte_descripcio"
+        android:layout_marginLeft="150dp"
+        android:text="@string/plus" />
+
+    <Button
+        android:id="@+id/button_minus"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/producte_descripcio"
+        android:layout_marginLeft="250dp"
+        android:text="@string/minus" />
+
+    <TextView
+        android:id="@+id/quantitat"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/producte_descripcio"
+        android:layout_marginLeft="200dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:text="0"
+        android:textSize="24sp" />
+
+
+</RelativeLayout>

@@ -5,4 +5,10 @@
     <string name="home">Home</string>
     <string name="adapter">Productes</string>
     <string name="productes">Productes</string>
+    <string name="producteNou">"Nou Producte "</string>
+    <string name="carrito">Carret de la compra</string>
+    <string name="minus">-</string>
+    <string name="plus">+</string>
+    <string name="menjar_descripcio">Descripció</string>
+    <string name="menjar_nom">Nom</string>
 </resources>

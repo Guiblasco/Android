@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+
+
 public class AdaptadorProductes extends BaseAdapter {
     Context context;
     ArrayList <Producte> compra = new ArrayList<>();
@@ -39,37 +41,16 @@ public class AdaptadorProductes extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        convertView = LayoutInflater.from(context).inflate(R.layout.item_product, null);
+        convertView = LayoutInflater.from(context).inflate(R.layout.listview_row, null);
         Producte item = (Producte) getItem(position);
 
-        ImageView imgProduct = (ImageView) convertView.findViewById(R.id.imgProduct);
+        ImageView imgProduct = (ImageView) convertView.findViewById(R.id.producte_avatar);
         Glide.with(context).load(item.getFoto()).into(imgProduct);
 
-        TextView nameProduct = (TextView) convertView.findViewById(R.id.nameProduct);
-        nameProduct.setText(item.nom);
+        TextView nameProduct = (TextView) convertView.findViewById(R.id.producte_nom);
+        nameProduct.setText(item.getNomProducte());
 
         return convertView;
 
     }
 }
-  /*  static class Holder {
-        TextView nameProduct;
-        TextView quantitat;
-        CheckBox checkBox;
-        ImageView imgProduct;
-        Button bntMes, btnMenys;
-
-        public Button getBntMes() {return bntMes;}
-        public void setBntMes(Button bntMes) {this.bntMes = bntMes;}
-        public Button getBtnMenys() {return btnMenys;}
-        public void setBtnMenys(Button btnMenys) {this.btnMenys = btnMenys;}
-        public TextView getQuantitat() {return quantitat;}
-        public void setQuantitat(TextView quantitat) {this.quantitat = quantitat;}
-        public TextView getNameProduct() {return nameProduct;}
-        public void setNameProduct(TextView nameProduct) {this.nameProduct = nameProduct;}
-        public CheckBox getCheckBox() {return checkBox;}
-        public void setCheckBox(CheckBox checkBox) {this.checkBox = checkBox;}
-        public ImageView getImgProduct() {return imgProduct;}
-        public void setImgProduct(ImageView imgProduct) {this.imgProduct = imgProduct;}
-    }
-}*/
